@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import "./Login.scss";
+import "./Login.module.scss";
 import {
   Button,
   Container,

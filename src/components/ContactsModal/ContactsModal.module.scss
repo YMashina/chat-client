@@ -1,0 +1,9 @@
+.formButtons{
+  margin-top: 1rem;
+  text-align: right;
+  button{
+    &:first-child{
+      margin-right: 1rem;
+    }
+  }
+}
