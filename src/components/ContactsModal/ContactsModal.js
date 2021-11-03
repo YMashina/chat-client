@@ -6,10 +6,10 @@ import { useContacts } from "../../contexts/ContactsProvider";
 const ContactsModal = ({ hideModal }) => {
   const idRef = useRef();
   const nameRef = useRef();
+  const { createContact } = useContacts();
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log("submit");
     createContact(idRef.current.value, nameRef.current.value);
     hideModal();
   };
@@ -20,20 +20,15 @@ const ContactsModal = ({ hideModal }) => {
         <Modal.Title>Add new contact</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form onSubmit={handleFormSubmit}>
+        <Form onSubmit={(e) => handleFormSubmit(e)}>
           <Form.Group>
             <Form.Label>Enter the contact's id</Form.Label>
-            <FormControl
-              itemRef={idRef}
-              placeholder="ID"
-              type="text"
-              required
-            />
+            <FormControl ref={idRef} placeholder="ID" type="text" required />
           </Form.Group>
           <Form.Group>
             <Form.Label>Enter the contact's name</Form.Label>
             <FormControl
-              itemRef={nameRef}
+              ref={nameRef}
               placeholder="Name"
               type="text"
               required

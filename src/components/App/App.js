@@ -5,14 +5,17 @@ import Sidebar from "../Sidebar/Sidebar";
 import "./App.module.scss";
 import Dashboard from "../Dashboard/Dashboard";
 import { ContactsProvider } from "../../contexts/ContactsProvider";
+import { ConversationsProvider } from "../../contexts/ConversationsProvider";
 
 function App() {
   const [id, setId] = useLocalStorage("id");
 
   const contactsWrappedDashboard = (
-    <ContactsProvider>
-      <Dashboard id={id} />
-    </ContactsProvider>
+    <ConversationsProvider>
+      <ContactsProvider>
+        <Dashboard id={id} />
+      </ContactsProvider>
+    </ConversationsProvider>
   );
 
   return (
